@@ -1,11 +1,23 @@
 <div class="container">
     <div class="row">
         <!-- search user form -->
-        <form class="searchbox-padding searchbox-margin">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="searchbox-padding searchbox-margin">
             <div class="form-group">
-                <input type="text" class="form-control input-sm" placeholder="Enter github username">
+                <input 
+                    type="text" 
+                    class="form-control input-sm" 
+                    placeholder="Enter github username"
+                    name="username"
+                    ngModel
+                    required
+                    #username="ngModel"
+                    >
+                    <!-- validation error -->
+                    <div [hidden]="username.valid || username.pristine" class="alert alert-danger m-2">
+                        <p>username is required</p>
+                      </div>
             </div>
-            <button class="btn btn-sm btn-success" type="submit" (click)="onSubmit()">
+            <button [disabled]="f.invalid"  class="btn btn-sm btn-success" type="submit" >
                 Search
             </button><hr>
         </form>

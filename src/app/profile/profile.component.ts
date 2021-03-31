@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { GihubAPIService } from '../api/gihub-api.service';
 import { Repo } from '../repo';
 import { User } from '../user';
@@ -13,20 +14,25 @@ export class ProfileComponent implements OnInit {
   user:User = new User('','','');
 
   repos:Repo[] = [];
+
+  username:string;
   constructor(private githubAPIservice:GihubAPIService) { }
 
   ngOnInit(): void {
   }
 
-   onSubmit(){
+   onSubmit(f:NgForm){
+      //retrieve username
+       this.username = f.form.value.username;
+       
        //get user response (observable)
-        this.githubAPIservice.getUser('daneden').subscribe(
+        this.githubAPIservice.getUser(this.username).subscribe(
           res =>{
               this.user=res;
           }
         );
         //get repos
-        this.githubAPIservice.getUserRepos('daneden').subscribe(
+        this.githubAPIservice.getUserRepos(this.username).subscribe(
               res=>{
                 this.repos = res;
               }
