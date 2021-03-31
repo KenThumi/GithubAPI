@@ -9,23 +9,54 @@ import { User } from '../user';
 })
 export class GihubAPIService {
 
+  user:User;
+
+  repos:Repo[];
+
   constructor(private http:HttpClient) { }
 
   //geting user
   getUser(user:string){
-        let userResponse =  this.http
-                                .get<User>('https://api.github.com/users/'+user+'?access_token=' + environment.apiKey);
-        
-        return userResponse;
+      
+        let promise = new Promise(
+                            (resolve, reject) => {
+                               this.http.
+                                    get<User>('https://api.github.com/users/'+user+'?access_token=' + environment.apiKey)
+                                    .toPromise().then( 
+                                      response => {
+                                          this.user = response;
+                                          resolve(response)
+                                      }, error => {
+                                            reject(error)
+                                      }
+                                    )
+                            }
+        )
+
+        return promise;
   }
 
 
   //geting user repos
   getUserRepos(user:string){
-    let userRepos = this.http
-                        .get<Repo[]>('https://api.github.com/users/'+user+'/repos?access_token=' + environment.apiKey);
+        let promise =  new Promise( (resolve,reject) => {
+                                              this.http
+                                              .get<Repo[]>('https://api.github.com/users/'+user+'/repos?access_token=' + environment.apiKey)
+                                              .toPromise()
+                                              .then(
+                                                  res => {
+                                                      this.repos = res;
+                                                      resolve(res)
+                                                  }
+                                                  , error => {
+                                                        reject(error)
 
-     return userRepos;           
+                                                  }
+                                              )
+
+                                  })
+        return promise;
+
   }
 
 }

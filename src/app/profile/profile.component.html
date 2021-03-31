@@ -43,6 +43,7 @@
                     </div>
                     <!-- if no records -->
                     <div class="card-body" *ngIf="!user.login">
+                        <div *ngIf="loading" class="text-center">Loading...........</div>
                         <div class="text-center">No records found.</div>
                     </div>
                 </div>

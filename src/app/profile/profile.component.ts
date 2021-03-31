@@ -18,27 +18,26 @@ export class ProfileComponent implements OnInit {
   username:string;
 
   findRepo:string = '';
+
   constructor(private githubAPIservice:GihubAPIService) { }
 
   ngOnInit(): void {
   }
 
    onSubmit(f:NgForm){
-      //retrieve username
+       
+      //retrieve username from form
        this.username = f.form.value.username;
        
-       //get user response (observable)
-        this.githubAPIservice.getUser(this.username).subscribe(
-          res =>{
-              this.user=res;
-          }
-        );
+       //get user response
+        this.githubAPIservice.getUser(this.username);
+        this.user = this.githubAPIservice.user;
+
+
         //get repos
-        this.githubAPIservice.getUserRepos(this.username).subscribe(
-              res=>{
-                this.repos = res;
-              }
-        )
+  
+        this.githubAPIservice.getUserRepos(this.username);
+        this.repos = this.githubAPIservice.repos;
        
    }
 
