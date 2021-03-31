@@ -16,6 +16,8 @@ export class ProfileComponent implements OnInit {
   repos:Repo[] = [];
 
   username:string;
+
+  findRepo:string = '';
   constructor(private githubAPIservice:GihubAPIService) { }
 
   ngOnInit(): void {

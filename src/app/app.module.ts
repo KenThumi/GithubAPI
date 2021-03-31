@@ -6,11 +6,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SearchRepoPipe } from './pipes/search-repo.pipe';
+import { CapitalizeNameDirective } from './directives/capitalize-name.directive';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProfileComponent
+    ProfileComponent,
+    SearchRepoPipe,
+    CapitalizeNameDirective,
   ],
   imports: [
     BrowserModule,
