@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { Repo } from '../repo';
 import { User } from '../user';
 
 @Injectable({
@@ -20,5 +21,11 @@ export class GihubAPIService {
 
 
   //geting user repos
+  getUserRepos(user:string){
+    let userRepos = this.http
+                        .get<Repo[]>('https://api.github.com/users/'+user+'/repos?access_token=' + environment.apiKey);
+
+     return userRepos;           
+  }
 
 }

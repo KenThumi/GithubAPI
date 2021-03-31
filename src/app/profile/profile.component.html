@@ -1,27 +1,37 @@
 <div class="container">
     <div class="row">
+        <!-- search user form -->
         <form class="searchbox-padding searchbox-margin">
             <div class="form-group">
                 <input type="text" class="form-control input-sm" placeholder="Enter github username">
             </div>
             <button class="btn btn-sm btn-success" type="submit" (click)="onSubmit()">
                 Search
-            </button>
+            </button><hr>
         </form>
-        <hr>
+           <!-- end search user form -->
             <div class="col-md-6">
                 <!-- profile side -->
                 <div class="card card-success">
                     <div class="card-header bg-success">
-                        Github User
+                        Github Profile
                     </div>
-                    <div class="card-body">
-                           <img [src]="user.avatar_url" [alt]="user.name" class="img rounded-circle user-img">
+                    <div class="card-body" *ngIf="user.login">
+                           <img [src]="user.avatar_url" [alt]="user.name" class="img rounded-circle mx-auto d-block user-img">
                            <br>
                            <!-- <strong>Name <small>(name 2)</small></strong> -->
-                           <div>Name:<strong>{{ user.name }}</strong></div>
-                           <div>Username:<strong>{{ user.login }}</strong></div>
+                           <div class="text-center">Name:<strong>{{ user.name }}</strong></div>
+                           <div class="text-center">Username:<strong>{{ user.login }}</strong></div>
+                           <div>
+                            <small>
+                                <a class="btn btn-outline-info btn-sm" target="_blank" [href]="user.html_url">Github Link</a>
+                            </small>
+                           </div>
                            
+                    </div>
+                    <!-- if no records -->
+                    <div class="card-body" *ngIf="!user.login">
+                        <div class="text-center">No records found.</div>
                     </div>
                 </div>
             </div>
@@ -30,12 +40,28 @@
                     <div class="card-header bg-success">
                         Repositories
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" *ngIf="repos.length > 0">
+                        <form class="searchbox-margin">
+                            <div class="form-group">
+                                <input type="text" class="form-control input-sm" placeholder="Search Repo">
+                            </div>
+        
+                        </form>
                             <div class="m-2">
                                 <ul class="list-group">
-                                    <li class="list-group-item">Lorem Ipsum</li>
+                                    <li class="list-group-item" *ngFor="let repo of repos">
+                                          <h6>{{ repo.name }} </h6>
+                                          <p>{{ repo.description }}</p>
+                                          <small>
+                                              <a  target="_blank"  class="btn btn-outline-info btn-sm" [href]="repo.html_url">Link</a>
+                                          </small>
+                                    </li>
                                 </ul>
                         </div>   
+                    </div>
+                    <!-- if no repos records -->
+                    <div class="card-body" *ngIf="repos.length == 0">
+                        <div class="text-center">No records found.</div>
                     </div>
                 </div>
             </div>
