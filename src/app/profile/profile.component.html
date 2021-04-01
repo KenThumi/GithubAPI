@@ -22,7 +22,7 @@
             </button><hr>
         </form>
            <!-- end search user form -->
-            <div class="col-md-6">
+            <div class="col-md-8 offset-md-2">
                 <!-- profile side -->
                 <div class="card card-success">
                     <div class="card-header bg-success">
@@ -43,43 +43,11 @@
                     </div>
                     <!-- if no records -->
                     <div class="card-body" *ngIf="!user.login">
-                        <div *ngIf="loading" class="text-center">Loading...........</div>
                         <div class="text-center">No records found.</div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="card card-success">
-                    <div class="card-header bg-success">
-                        Repositories
-                    </div>
-                    <div class="card-body" *ngIf="repos.length > 0">
-                        <!-- search repo -->
-                        <form class="searchbox-margin">
-                            <div class="form-group">
-                                <input type="text" [(ngModel)]="findRepo" name="findRepo" class="form-control input-sm" placeholder="Search Repo">
-                            </div>
-        
-                        </form>
-                        <!-- end search repo -->
-                            <div class="m-2">
-                                <ul class="list-group">
-                                    <li class="list-group-item" *ngFor="let repo of repos | searchRepo:findRepo">
-                                          <h6>{{ repo.name }} </h6>
-                                          <p>{{ repo.description }}</p>
-                                          <small>
-                                              <a  target="_blank"  class="btn btn-outline-info btn-sm" [href]="repo.html_url">Repo Link</a>
-                                          </small>
-                                    </li>
-                                </ul>
-                        </div>   
-                    </div>
-                    <!-- if no repos records -->
-                    <div class="card-body" *ngIf="repos.length == 0">
-                        <div class="text-center">No records found.</div>
-                    </div>
-                </div>
-            </div>
+            
             
         
     </div>

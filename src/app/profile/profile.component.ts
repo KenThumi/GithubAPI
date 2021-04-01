@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit {
   }
 
    onSubmit(f:NgForm){
-       
+     
       //retrieve username from form
        this.username = f.form.value.username;
        
