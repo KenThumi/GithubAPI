@@ -20,7 +20,7 @@ Below are steps to follow:
     `ng serve`
 4. In your browser open:
     `http:://localhost:4200`
-5. Use IDE of your choice, e.g VsCode, Sublime text ,etc.
+5. Use IDE of your choice to work with the project, e.g VsCode, Sublime text ,etc.
 
 ## Code scaffolding
 
@@ -36,6 +36,7 @@ In this project, below is a list of technologies used:
 - CSS 
 - [Bootrap 4](https://getbootstrap.com/)
 - [Angular](https://angular.io)
+- [Angular Material](https://material.angular.io/)
 
 ## License info
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
