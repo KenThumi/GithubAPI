@@ -1,5 +1,5 @@
 
-# Github Users Viewer API
+# Github User Viewer API
 ## Description
 This is a website that enables user to search a Github user and view their profile and more importantly 
 their repositories.
@@ -13,7 +13,7 @@ To preview the website, use this link <a href="https://KenThumi.github.io/Github
 ## Setup instructions
 Below are steps to follow:
 1. Open cli, navigate to your project folder and clone the project: 
-    `git clone https://github.com/Kenneththumi/Quotes.git`
+    `git clone https://github.com/KenThumi/GithubAPI.git`
 2. Inside the project folder, install Node Modules:
     `npm install`
 3. Run:
@@ -41,7 +41,7 @@ In this project, below is a list of technologies used:
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
 - **[MIT license](http://opensource.org/licenses/mit-license.php)**
-- Copyright 2021 © <a href="https://KenThumi.github.io/GithubAPI/" target="_blank">Github Users Viewer API</a>.
+- Copyright 2021 © <a href="https://KenThumi.github.io/GithubAPI/" target="_blank">Github User Viewer API</a>.
 
 
 
