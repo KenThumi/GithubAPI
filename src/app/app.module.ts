@@ -11,6 +11,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { SearchRepoPipe } from './pipes/search-repo.pipe';
 import { CapitalizeNameDirective } from './directives/capitalize-name.directive';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ReposComponent } from './repos/repos.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     SearchRepoPipe,
     CapitalizeNameDirective,
     PageNotFoundComponent,
+    ReposComponent,
   ],
   imports: [
     BrowserModule,

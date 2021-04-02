@@ -1,0 +1,37 @@
+
+<div class="container mt-2">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-success">
+                <div class="card-header bg-success">
+                   <span class="username">{{ username }}</span> Repositories <div class="float-right"><a routerLink="/profile" class="btn btn-info btn-sm">Back to search</a></div>
+                </div>
+                <div class="card-body">
+                    <!-- search repo -->
+                    <form class="searchbox-margin">
+                        <div class="form-group">
+                            <input type="text" [(ngModel)]="findRepo" name="findRepo" class="form-control input-sm" placeholder="Search Repo">
+                        </div>
+    
+                    </form>
+                    <!-- end search repo -->
+                        <div class="m-2">
+                            <ul class="list-group">
+                                <li class="list-group-item" *ngFor="let repo of repos | searchRepo:findRepo">
+                                      <h6>{{ repo.name }} </h6>
+                                      <p>{{ repo.description }}</p>
+                                      <small>
+                                          <a  target="_blank"  class="btn btn-outline-info btn-sm" [href]="repo.html_url">Repo Link</a>
+                                      </small>
+                                </li>
+                            </ul>
+                    </div>   
+                </div>
+                <!-- if no repos records -->
+                <div class="card-body" *ngIf="repos.length == 0">
+                    <div class="text-center">No records found.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

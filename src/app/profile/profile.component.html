@@ -21,32 +21,35 @@
                 Search
             </button><hr>
         </form>
-           <!-- end search user form -->
-            <div class="col-md-8 offset-md-2">
-                <!-- profile side -->
-                <div class="card card-success">
-                    <div class="card-header bg-success">
-                        Github Profile
-                    </div>
-                    <div class="card-body" *ngIf="user.login">
-                           <img [src]="user.avatar_url" [alt]="user.name" class="img rounded-circle mx-auto d-block user-img">
-                           <br>
-                           <!-- <strong>Name <small>(name 2)</small></strong> -->
-                           <div *ngIf="user.name" class="text-center">Name:<strong appCapitalizeName>{{ user.name }}</strong></div>
-                           <div class="text-center">Username:<strong>{{ user.login }}</strong></div>
-                           <div>
-                            <small>
-                                <a class="btn btn-outline-info btn-sm" target="_blank" [href]="user.html_url">Github Account Link</a>
-                            </small>
-                           </div>
-                           
-                    </div>
-                    <!-- if no records -->
-                    <div class="card-body" *ngIf="!user.login">
-                        <div class="text-center">No records found.</div>
-                    </div>
+          <!-- end search user form -->
+          <div class="col-md-8 offset-md-2">
+            <!-- profile side -->
+            <div class="card card-success">
+                <div class="card-header bg-success">
+                    Github Profile
+                </div>
+                <div class="card-body" *ngIf="user" >
+                       <img [src]="user.avatar_url" [alt]="user.name" class="img rounded-circle mx-auto d-block user-img">
+                       <br>
+                       <!-- <strong>Name <small>(name 2)</small></strong> -->
+                       <div *ngIf="user.name" class="text-center">Name:<strong appCapitalizeName>{{ user.name }}</strong></div>
+                       <div class="text-center">Username:<strong>{{ user.login }}</strong></div>
+                       <div>
+                        <small>
+                            <a class="btn btn-outline-info btn-sm" target="_blank" [href]="user.html_url">Github Account Link</a>
+                        </small>
+                        <small class="float-right">
+                            <a class="btn btn-outline-info btn-sm" target="_blank" [routerLink]="['/repos']" [queryParams]="{ username:user.login }">Repositories</a>
+                        </small>
+                       </div>
+                       
+                </div>
+                <!-- if no records -->
+                <div class="card-body" *ngIf="!user">
+                    <div class="text-center">No records found.</div>
                 </div>
             </div>
+        </div> 
             
             
         
