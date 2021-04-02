@@ -1,10 +1,26 @@
-# GithubAPI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.6.
+# Github Users Viewer API
+## Description
+This is a website that enables user to search a Github user and view their profile and more importantly 
+their repositories.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
 
-## Development server
+To preview the website, use this link <a href="https://KenThumi.github.io/GithubAPI/" target="_blank">here</a>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Author
+- [Kenneth Thumi](https://github.com/KennethThumi)
+
+## Setup instructions
+Below are steps to follow:
+1. Open cli, navigate to your project folder and clone the project: 
+    `git clone https://github.com/Kenneththumi/Quotes.git`
+2. Inside the project folder, install Node Modules:
+    `npm install`
+3. Run:
+    `ng serve`
+4. In your browser open:
+    `http:://localhost:4200`
+5. Use IDE of your choice, e.g VsCode, Sublime text ,etc.
 
 ## Code scaffolding
 
@@ -14,14 +30,19 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+## Technologies Used
+In this project, below is a list of technologies used:
+- HTML
+- CSS 
+- [Bootrap 4](https://getbootstrap.com/)
+- [Angular](https://angular.io)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## License info
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
-## Running end-to-end tests
+- **[MIT license](http://opensource.org/licenses/mit-license.php)**
+- Copyright 2021 © <a href="https://KenThumi.github.io/GithubAPI/" target="_blank">Github Users Viewer API</a>.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
