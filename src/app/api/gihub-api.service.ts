@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Repo } from '../repo';
 import { User } from '../user';
@@ -21,9 +20,12 @@ export class GihubAPIService {
   }
 
   //geting user
-  getUser(user:string): Observable<User>{
+  getUser(user:string){
+       //with url with PAK for dev
+       //let apiUrl= `https://api.github.com/users/${user}?access_token=${environment.apiKey}`;
 
-       let apiUrl= `https://api.github.com/users/${user}?access_token=${environment.apiKey}`;
+       //with url withiout PAK for produdtion
+       let apiUrl= `https://api.github.com/users/${user}`;
 
        //observable option
        let userObservable = this.http
@@ -58,8 +60,12 @@ export class GihubAPIService {
 
 
   //geting user repos
-  getUserRepos(user:string): Observable<Repo[]>{
-      let apiUrl= `https://api.github.com/users/${user}/repos?access_token=${environment.apiKey}`;
+  getUserRepos(user:string){
+       //with url with PAK for dev
+       //let apiUrl= `https://api.github.com/users/${user}/repos?access_token=${environment.apiKey}`;
+
+       //with url withiout PAK for produdtion
+       let apiUrl= `https://api.github.com/users/${user}/repos`;
 
       let reposObservable = this.http.get<Repo[]>(apiUrl);
 
