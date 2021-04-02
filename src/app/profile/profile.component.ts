@@ -18,6 +18,8 @@ export class ProfileComponent implements OnInit {
 
   username:string;
 
+  error:any;
+
   constructor(private githubAPIservice:GihubAPIService,private route:ActivatedRoute,private router:Router) {
            this.user == new User('','','','');
    }
@@ -34,7 +36,10 @@ export class ProfileComponent implements OnInit {
         this.githubAPIservice.getUser(this.username).subscribe(
                                             response => {
                                                 this.user = response;
-                                            }
+                                            },err=>{
+                                                console.log(err);
+                                                this.error = err;
+                                          }
                                       )
 
       //get user using promises

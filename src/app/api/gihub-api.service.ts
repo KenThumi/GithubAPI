@@ -21,7 +21,7 @@ export class GihubAPIService {
   }
 
   //geting user
-  getUser(user:string){
+  getUser(user:string): Observable<User>{
 
        let apiUrl= `https://api.github.com/users/${user}?access_token=${environment.apiKey}`;
 
@@ -31,7 +31,7 @@ export class GihubAPIService {
 
        return userObservable;
       
-      //  promise option
+//  promise option
       //   let promise = new Promise(
       //                       (resolve, reject) => {
                         
@@ -58,7 +58,7 @@ export class GihubAPIService {
 
 
   //geting user repos
-  getUserRepos(user:string){
+  getUserRepos(user:string): Observable<Repo[]>{
       let apiUrl= `https://api.github.com/users/${user}/repos?access_token=${environment.apiKey}`;
 
       let reposObservable = this.http.get<Repo[]>(apiUrl);

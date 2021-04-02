@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container pb-5">
     <div class="row">
         <!-- search user form -->
         <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="searchbox-padding searchbox-margin">
@@ -23,32 +23,61 @@
         </form>
           <!-- end search user form -->
           <div class="col-md-8 offset-md-2">
-            <!-- profile side -->
-            <div class="card card-success">
-                <div class="card-header bg-success">
-                    Github Profile
+            <mat-card *ngIf="user" >
+                <mat-card-header>
+                  <mat-card-title *ngIf="user.name">{{ user.name }}</mat-card-title>
+                  <mat-card-subtitle>{{ user.login }}</mat-card-subtitle>
+                </mat-card-header>
+        
+                <mat-card-content class="py-2">
+                  <p>
+                    <img [src]="user.avatar_url" [alt]="user.name" class="img rounded-circle mx-auto d-block user-img">
+                  </p>
+                  
+                 <div class="attributes mx-auto">
+                                   
+                                   <div *ngIf="user.company"> Company:<span class="attribute">{{ user.company }}</span><br> </div>
+                                   <div *ngIf="user.blog"> Blog:<a [href]="user.blog" target="_blank" class="attribute">{{ user.blog }}</a><br> </div>
+                                   <div *ngIf="user.location"> Location:<span class="attribute">{{ user.location }}</span><br> </div>
+                                   <div *ngIf="user.email"> Email:<span class="attribute">{{ user.email }}</span><br> </div>
+                                   <div *ngIf="user.hireable"> Hireable:<span class="attribute">{{ user.hireable }}</span><br> </div>
+                                   <div *ngIf="user.bio"> Bio:<span class="attribute">{{ user.bio }}</span><br> </div>
+                                   <div *ngIf="user.followers"> Followers:<span class="attribute">{{ user.followers }}</span><br> </div>
+                                   <div *ngIf="user.following"> Following:<span class="attribute">{{ user.following }}</span><br> </div>
+                                    
                 </div>
-                <div class="card-body" *ngIf="user" >
-                       <img [src]="user.avatar_url" [alt]="user.name" class="img rounded-circle mx-auto d-block user-img">
-                       <br>
-                       <!-- <strong>Name <small>(name 2)</small></strong> -->
-                       <div *ngIf="user.name" class="text-center">Name:<strong appCapitalizeName>{{ user.name }}</strong></div>
-                       <div class="text-center">Username:<strong>{{ user.login }}</strong></div>
-                       <div>
-                        <small>
-                            <a class="btn btn-outline-info btn-sm" target="_blank" [href]="user.html_url">Github Account Link</a>
-                        </small>
-                        <small class="float-right">
-                            <a class="btn btn-outline-info btn-sm" target="_blank" [routerLink]="['/repos']" [queryParams]="{ username:user.login }">Repositories</a>
-                        </small>
-                       </div>
-                       
-                </div>
-                <!-- if no records -->
-                <div class="card-body" *ngIf="!user">
+                  
+                </mat-card-content>
+                <mat-card-footer>
+                    <a 
+                        mat-raised-button 
+                        color="primary" 
+                        target="_blank" 
+                        [href]="user.html_url"
+                        class="float-left"
+                    >
+                        Github Account
+                    </a>
+                    <a 
+                        mat-raised-button  
+                        color="warn"
+                        target="_blank"  
+                        [routerLink]="['/repos']" 
+                        [queryParams]="{ username:user.login }"
+                        [matBadge]="user.public_repos" 
+                        matBadgePosition="after" 
+                        matBadgeColor="primary"
+                        class="float-right"
+                    >
+                        Repositories
+                    </a>
+                </mat-card-footer>
+              </mat-card>
+              <mat-card  *ngIf="!user">
+                   <div class="p-3">
                     <div class="text-center">No records found.</div>
-                </div>
-            </div>
+                   </div>
+              </mat-card>
         </div> 
             
             

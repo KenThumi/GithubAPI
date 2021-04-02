@@ -12,6 +12,8 @@ import { SearchRepoPipe } from './pipes/search-repo.pipe';
 import { CapitalizeNameDirective } from './directives/capitalize-name.directive';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ReposComponent } from './repos/repos.component';
+import { MaterialModule } from './shared/material/material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { ReposComponent } from './repos/repos.component';
     FormsModule,
     HttpClientModule,
     NgProgressModule.forRoot(),
-    NgProgressHttpClientModule
+    NgProgressHttpClientModule,
+    MaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -10,5 +10,28 @@
 }
 
 .user-img{
-    width: 164px;
+    width: 270px;
+}
+
+mat-card-header{
+    background-color: #f6f8fa;
+    border-radius: 2px;
+}
+mat-card{
+    padding: 1.9rem;
+}
+
+mat-card-footer{
+    height: 50px;
+}
+
+mat-card-subtitle{
+    padding-top: 10px;
+}
+.attributes{
+    width: 21%;
+}
+
+.attribute{
+    font-weight: bold;
 }
