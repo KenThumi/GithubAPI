@@ -6,7 +6,7 @@
                 <div class="card-header bg-success">
                    <span class="username">{{ username }}</span> Repositories <div class="float-right"><a routerLink="/profile" class="btn btn-info btn-sm">Back to search</a></div>
                 </div>
-                <div class="card-body">
+                <div class="card-body" *ngIf="repos.length > 0 && !loading && !error">
                     <!-- search repo -->
                     <form class="searchbox-margin">
                         <div class="form-group">
@@ -28,8 +28,14 @@
                     </div>   
                 </div>
                 <!-- if no repos records -->
-                <div class="card-body" *ngIf="repos.length == 0">
+                <div class="card-body" *ngIf="repos.length == 0  && !loading || error">
                     <div class="text-center">No records found.</div>
+                </div>
+                <!-- loading -->
+                <div class="card-body" *ngIf="loading">
+                    <div class="p-3">
+                        <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
+                    </div>
                 </div>
             </div>
         </div>

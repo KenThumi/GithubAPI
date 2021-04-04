@@ -18,7 +18,11 @@ export class ProfileComponent implements OnInit {
 
   username:string;
 
-  error:any;
+  error:boolean = false; //e.g 404 
+
+  loading:boolean =false;
+
+
 
   constructor(private githubAPIservice:GihubAPIService,private route:ActivatedRoute,private router:Router) {
            this.user == new User('','','','');
@@ -28,6 +32,9 @@ export class ProfileComponent implements OnInit {
   }
 
    onSubmit(f:NgForm){
+       this.loading = true;
+
+       this.error = false;
      
       //retrieve username from form
        this.username = f.form.value.username;
@@ -36,9 +43,12 @@ export class ProfileComponent implements OnInit {
         this.githubAPIservice.getUser(this.username).subscribe(
                                             response => {
                                                 this.user = response;
+
+                                                this.loading = false;
                                             },err=>{
                                                 console.log(err);
-                                                this.error = err;
+                                                this.error = true;
+                                                this.loading = false;
                                           }
                                       )
 

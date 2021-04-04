@@ -18,10 +18,16 @@ export class ReposComponent implements OnInit {
 
   findRepo:string = '';
 
+  loading:boolean =false;
+
+  error:boolean = false;
+
   constructor(private route:ActivatedRoute, private githubAPIservice:GihubAPIService) {  }
 
   ngOnInit(): void {
-      
+    this.loading=true;
+    this.error = false;  
+
     this.username = this.route.snapshot.queryParams['username'];
 
     this.githubAPIservice.getUserRepos(this.username).subscribe(
@@ -29,7 +35,13 @@ export class ReposComponent implements OnInit {
                                           this.repositories = response;
 
                                           this.setRepos();
-                                        }
+
+                                          this.loading = false;
+                                        },
+                            error => {
+                                          this.error = true;
+                                          this.loading = false;
+                            }
     )
        
    

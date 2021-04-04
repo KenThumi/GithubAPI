@@ -14,7 +14,7 @@ To preview the website, use this link <a href="https://KenThumi.github.io/Github
 Below are steps to follow:
 1. Open cli, navigate to your project folder and clone the project: 
     `git clone https://github.com/KenThumi/GithubAPI.git`
-2. Inside the project folder, install Node Modules:
+2. Inside the project folder, install Node Packages / Modules:
     `npm install`
 3. Run:
     `ng serve`

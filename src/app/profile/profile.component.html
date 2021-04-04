@@ -23,7 +23,7 @@
         </form>
           <!-- end search user form -->
           <div class="col-md-8 offset-md-2">
-            <mat-card *ngIf="user" >
+            <mat-card *ngIf="user && !loading && !error" >
                 <mat-card-header>
                   <mat-card-title *ngIf="user.name" appCapitalizeName>{{ user.name  }}</mat-card-title>
                   <mat-card-subtitle>{{ user.login }}</mat-card-subtitle>
@@ -73,11 +73,16 @@
                     </a>
                 </mat-card-footer>
               </mat-card>
-              <mat-card  *ngIf="!user">
+              <mat-card  *ngIf="!user && !loading || error">
                    <div class="p-3">
                     <div class="text-center">No records found.</div>
                    </div>
               </mat-card>
+              <mat-card  *ngIf="loading">
+                <div class="p-3">
+                    <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
+                </div>
+           </mat-card>
         </div> 
             
             
